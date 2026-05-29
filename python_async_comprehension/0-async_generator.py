@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-'''Async Generator'''
+"""Module 0-async_generator.py"""
 import asyncio
 import random
-from typing import Generator
+from typing import AsyncGenerator
 
 
-async def async_generator() -> Generator[float, None, None]:
-    '''Async Generator'''
+async def async_generator() -> AsyncGenerator[float, None]:
+    """Loops 10 times, waits 1 sec each time, yields random float (0-10)"""
     for _ in range(10):
+        # Must explicitly AWAIT the sleep so the loop actually pauses
         await asyncio.sleep(1)
-        yield random.randint(0, 10)
+        
+        # uniform gives a random float within the specific 0 to 10 bounds
+        yield random.uniform(0, 10)
