@@ -42,7 +42,12 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         indexed_dataset = self.indexed_dataset()
 
-        assert index is not None and index >= 0 and index < len(indexed_dataset)
+        assert (
+            index is not None
+            and
+            index >= 0
+            and
+            index < len(indexed_dataset))
 
         data_list = []
         for i in range(index, index + page_size):
