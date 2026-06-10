@@ -2,10 +2,7 @@
 '''Simple pagination'''
 from ast import Dict
 import csv
-from curses import keyname
 import math
-from multiprocessing import Value
-from turtle import st
 from typing import List
 
 
@@ -51,6 +48,8 @@ class Server:
             "prev_page": page - 1 if page > 1 else None,
             "total_pages": math.ceil(len(self.dataset()) / page_size)
         }
+
+        return page_info
 
 
 def index_range(page: int, page_size: int) -> tuple:
