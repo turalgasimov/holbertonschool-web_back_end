@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''Simple pagination'''
+'''Simple pagination for the project.'''
 from ast import Dict
 import csv
 import math
