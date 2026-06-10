@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 '''Simple pagination'''
 import csv
-import math
-from turtle import st
-from typing import List
+from typing import List, Tuple
 
 
 class Server:
@@ -38,7 +36,7 @@ class Server:
         return (ds[start:end])
 
 
-def index_range(page: int, page_size: int) -> tuple:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     '''simple helper function'''
     end = page * page_size
     start = end - page_size
