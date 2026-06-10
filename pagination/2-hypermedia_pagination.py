@@ -39,18 +39,19 @@ class Server:
         ds = self.dataset()
 
         return (ds[start:end])
-    
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, object]:
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         page_data = self.get_page(page, page_size)
-        
+
         page_info = {
-            "page_size" : page_size,
-            "page" : page,
-            "data" : page_data,
-            "next_page" : page + 1 if len(page_data) == page_size else None,
-            "prev_page" : page - 1 if page > 1 else None,
-            "total_pages" : math.ceil(len(self.dataset()) / page_size)
+            "page_size": page_size,
+            "page": page,
+            "data": page_data,
+            "next_page": page + 1 if len(page_data) == page_size else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": math.ceil(len(self.dataset()) / page_size)
         }
+
 
 def index_range(page: int, page_size: int) -> tuple:
     '''simple helper function'''
