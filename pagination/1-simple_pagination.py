@@ -30,13 +30,14 @@ class Server:
         assert page > 0 and page_size > 0
 
         indexes = index_range(page, page_size)
-        
+
         start = indexes[0]
         end = indexes[1]
 
         ds = self.dataset()
 
         return (ds[start:end])
+
 
 def index_range(page: int, page_size: int) -> tuple:
     '''simple helper function'''
