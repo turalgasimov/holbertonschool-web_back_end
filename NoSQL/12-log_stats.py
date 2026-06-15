@@ -2,11 +2,24 @@
 '''Module 12-log_stats'''
 from pymongo import MongoClient
 
-def log_stats(mongo_collection):
+
+def log_stats():
     '''Provides some stats about Nginx logs'''
+
+    db = MongoClient().logs
+    mongo_collection = db.nginx
+
+
     if mongo_collection is None:
         print(
-            "0 logs\nMethods:\n\tmethod GET: 0\n\tmethod POST: 0\n\tmethod PUT: 0\n\tmethod PATCH: 0\n\tmethod DELETE: 0\n0 status check"
+            '''0 logs\n
+            Methods:\n
+            \tmethod GET: 0\n
+            \tmethod POST: 0\n
+            \tmethod PUT: 0\n
+            \tmethod PATCH: 0\n
+            \tmethod DELETE: 0\n
+            0 status check'''
         )
 
     total_logs = mongo_collection.count_documents({})
@@ -18,6 +31,8 @@ def log_stats(mongo_collection):
     for method in methods:
         count = mongo_collection.count_documents({"method": method})
         print(f"\tmethod {method}: {count}")
-    
-    status_check = mongo_collection.count_documents({"method": "GET", "path": "/status"})
+
+    status_check = mongo_collection.count_documents(
+        {"method": "GET", "path": "/status"}
+    )
     print(f"{status_check} status check")
