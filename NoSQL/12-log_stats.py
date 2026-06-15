@@ -10,7 +10,7 @@ def log_stats():
     mongo_collection = db.nginx
 
 
-    if mongo_collection is None:
+    if mongo_collection.count_documents() == 0:
         print(
             '''0 logs\n
             Methods:\n
