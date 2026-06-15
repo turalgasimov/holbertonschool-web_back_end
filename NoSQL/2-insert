@@ -1,5 +1,4 @@
 // 2-insert
-db.createCollection("school")
-db.school.insertOne({
+db.school.insert({
 	name: "Holberton school"
 })
