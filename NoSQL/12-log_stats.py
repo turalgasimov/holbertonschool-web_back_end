@@ -4,8 +4,6 @@ from pymongo import MongoClient
 
 def log_stats(mongo_collection):
     '''Provides some stats about Nginx logs'''
-    if mongo_collection is None:
-        return
 
     total_logs = mongo_collection.count_documents({})
     print(f"{total_logs} logs")
