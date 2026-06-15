@@ -3,26 +3,14 @@
 from pymongo import MongoClient
 
 
-def log_stats():
+if __name__ == "__main__":
     '''Provides some stats about Nginx logs'''
 
     db = MongoClient("mongodb://127.0.0.1:27017").logs
     mongo_collection = db.nginx
 
 
-    if mongo_collection.count_documents() == 0:
-        print(
-            '''0 logs\n
-            Methods:\n
-            \tmethod GET: 0\n
-            \tmethod POST: 0\n
-            \tmethod PUT: 0\n
-            \tmethod PATCH: 0\n
-            \tmethod DELETE: 0\n
-            0 status check'''
-        )
-
-    total_logs = mongo_collection.count_documents({})
+    total_logs = mongo_collection.estimated_document_count()
     print(f"{total_logs} logs")
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
