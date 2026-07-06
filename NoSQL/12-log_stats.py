@@ -2,7 +2,6 @@
 '''Module 12-log_stats'''
 from pymongo import MongoClient
 
-
 if __name__ == "__main__":
     '''Provides some stats about Nginx logs'''
 
