@@ -3,7 +3,7 @@ export default function updateGradeByCity(students, city, newGrades) {
         return [];
     }
 
-    return students.fillter((student) => student.location === city).map((student) => {
+    return students.filter((student) => student.location === city).map((student) => {
         const gradeObj = newGrades.find((grade) => grade.studentId === student.id);
         if (gradeObj) {
             return { ...student, grade: gradeObj.grade };
