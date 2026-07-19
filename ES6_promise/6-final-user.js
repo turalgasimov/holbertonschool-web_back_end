@@ -15,7 +15,8 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       } else {
         return {
           status: result.status,
-          value: result.reason // Promise.allSettled uses 'reason' for errors
+          // Convert the Error object to its string representation
+          value: result.reason.toString() 
         };
       }
     });
