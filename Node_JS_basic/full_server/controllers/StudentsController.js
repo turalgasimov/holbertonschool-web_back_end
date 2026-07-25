@@ -1,6 +1,6 @@
 import { readDatabase } from '../utils';
 
-export class StudentsController {
+class StudentsController {
   static getAllStudents(request, response) {
     const dbFile = process.argv[2];
 
@@ -8,7 +8,9 @@ export class StudentsController {
       .then((fields) => {
         const responseParts = ['This is the list of our students'];
 
-        const sortedFields = Object.keys(fields).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+        const sortedFields = Object.keys(fields).sort((a, b) => (
+          a.localeCompare(b, undefined, { sensitivity: 'base' })
+        ));
 
         for (const field of sortedFields) {
           const names = fields[field];
