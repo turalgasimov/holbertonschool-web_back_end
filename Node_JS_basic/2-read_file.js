@@ -30,7 +30,7 @@ function countStudents(path) {
 
   for (const row of studentRows) {
     const studentData = row.split(',');
-    
+
     if (studentData.length >= 4) {
       const firstname = studentData[0].trim();
       const field = studentData[3].trim();
